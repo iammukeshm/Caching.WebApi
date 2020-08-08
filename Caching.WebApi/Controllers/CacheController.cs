@@ -33,7 +33,8 @@ namespace Caching.WebApi.Controllers
             {
                 AbsoluteExpiration = DateTime.Now.AddMinutes(5),
                 Priority = CacheItemPriority.High,
-                SlidingExpiration = TimeSpan.FromMinutes(2)
+                SlidingExpiration = TimeSpan.FromMinutes(2),
+                Size = 1024,
             };
             memoryCache.Set(data.key, data.value, cacheExpiryOptions);
             return Ok();

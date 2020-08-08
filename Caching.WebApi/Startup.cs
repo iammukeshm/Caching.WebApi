@@ -32,8 +32,13 @@ namespace Caching.WebApi
                    Configuration.GetConnectionString("DefaultConnection"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             services.AddControllers();
-
+            //For In-Memory Caching
             services.AddMemoryCache();
+            //For Redis Caching
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:4455";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
